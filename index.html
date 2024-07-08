@@ -1,14 +1,4 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8" />
-
-<style id="webmakerstyle">
-
-</style>
-</head>
-<body>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -152,7 +142,7 @@
             font-family: Consolas, monospace;
             white-space: pre-wrap;
             overflow-x: auto;
-            max-height: 300px; /* Reduced height */
+            max-height: 300px;
             color: #f0f0f0;
             display: none;
             position: relative;
@@ -160,9 +150,9 @@
 
         #copyButton {
             position: absolute;
-            top: 255px; /* Adjusted to be closer to the top */
+            top: 267px;
             right: 32.5px;
-            padding: 7px 11px;
+            padding: 7px 13px;
             border: none;
             border-radius: 10px;
             background-color: #0dbf84;
@@ -201,7 +191,7 @@
         </div>
         <canvas id="outputCanvas"></canvas>
         <div id="outputCode"></div>
-        <button id="copyButton">Copy</button>
+        <button id="copyButton"><i class="fa-solid fa-copy"></i></button>
         <div id="errorMessage" class="error-message"></div>
     </div>
 
@@ -216,14 +206,11 @@
                     img.onload = function() {
                         var canvas = document.getElementById('outputCanvas');
                         var ctx = canvas.getContext('2d');
-                        var scale = parseFloat(document.getElementById('resolutionRange').value); // Adjust scale for higher resolution
-
+                        var scale = parseFloat(document.getElementById('resolutionRange').value);
                         canvas.width = img.width * scale;
                         canvas.height = img.height * scale;
                         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-                        // Apply a basic pixelated effect
-                        var pixelSize = 4; // Adjust pixel size for better quality
+                        var pixelSize = 4;
                         for (var y = 0; y < canvas.height; y += pixelSize) {
                             for (var x = 0; x < canvas.width; x += pixelSize) {
                                 var pixelData = ctx.getImageData(x, y, 1, 1).data;
@@ -231,12 +218,8 @@
                                 ctx.fillRect(x, y, pixelSize, pixelSize);
                             }
                         }
-
-                        // Generate HTML code for pixelated image
                         var htmlCode = generateHTMLCode(canvas);
                         document.getElementById('outputCode').textContent = htmlCode;
-
-                        // Show canvas and hide code view
                         document.getElementById('outputCanvas').style.display = 'block';
                         document.getElementById('outputCode').style.display = 'none';
                         document.getElementById('copyButton').style.display = 'none';
@@ -247,12 +230,10 @@
                 reader.readAsDataURL(file);
             }
         });
-
-        // Function to generate HTML code for the pixelated image
         function generateHTMLCode(canvas) {
             var htmlCode = '<div style="display: inline-block; border: 1px solid #ccc; overflow: hidden; font-size: 0;">\n';
             var ctx = canvas.getContext('2d');
-            var pixelSize = 4; // Same pixel size as used for drawing
+            var pixelSize = 4;
 
             for (var y = 0; y < canvas.height; y += pixelSize) {
                 htmlCode += '\t<div style="white-space: nowrap; font-size: 0;">\n';
@@ -267,8 +248,6 @@
             htmlCode += '</div>';
             return htmlCode;
         }
-
-        // Toggle between canvas and HTML code view
         document.getElementById('toggleViewButton').addEventListener('click', function() {
             var canvas = document.getElementById('outputCanvas');
             var outputCode = document.getElementById('outputCode');
@@ -286,8 +265,6 @@
                 this.textContent = 'Show Image';
             }
         });
-
-        // Update resolution label based on range input
         document.getElementById('resolutionRange').addEventListener('input', function() {
             var resolutionLabel = document.getElementById('resolutionLabel');
             var value = parseFloat(this.value);
@@ -315,23 +292,20 @@
                     break;
             }
         });
-
-        // Copy HTML code to clipboard
-        document.getElementById('copyButton').addEventListener('click', function() {
-            var outputCode = document.getElementById('outputCode');
-            var range = document.createRange();
-            range.selectNode(outputCode);
-            window.getSelection().removeAllRanges(); // Clear current selection
-            window.getSelection().addRange(range); // Select the text
-            document.execCommand('copy'); // Copy to clipboard
-            window.getSelection().removeAllRanges(); // Deselect the text
-            alert('Code copied to clipboard!');
-        });
+    document.getElementById('copyButton').addEventListener('click', function() {
+        var outputCode = document.getElementById('outputCode');
+        var range = document.createRange();
+        range.selectNode(outputCode);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        var copyButton = this;
+        copyButton.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+        
+        setTimeout(function() {
+            copyButton.innerHTML = '<i class="fa-solid fa-copy"></i>';
+        }, 1000);
+    });
     </script>
-</body>
-</html>
-
-
-
 </body>
 </html>
