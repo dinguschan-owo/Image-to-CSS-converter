@@ -1,298 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image to pure CSS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #202327;
-            color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow-y: hidden;
-        }
+      body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #202327;
+        color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        overflow-y: hidden;
+      }
 
-        .container {
-            background-color: #2d3339;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-            width: 770px;
-            text-align: center;
-            position: relative;
-            border: 5.5px solid #4f5964;
-        }
+      .container {
+        background-color: #2d3339;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        width: 770px;
+        text-align: center;
+        position: relative;
+        border: 5.5px solid #4f5964;
+      }
 
-        .control-group {
-            margin-bottom: 10px;
-            text-align: left;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+      .control-group {
+        margin-bottom: 10px;
+        text-align: left;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-        #imageInput {
-            width: 97.5%;
-            padding: 10px;
-            box-sizing: border-box;
-            border: 3px solid #4f5963;
-            border-radius: 10px;
-            font-size: 16px;
-            background-color: #394047;
-            color: #f0f0f0;
-            margin-bottom: 12.5px;
-        }
+      #imageInput {
+        width: 97.5%;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 3px solid #4f5963;
+        border-radius: 10px;
+        font-size: 16px;
+        background-color: #394047;
+        color: #f0f0f0;
+        margin-bottom: 12.5px;
+      }
 
-        #generateButton {
-            padding: 12px 24px;
-            margin-left: 0px;
-            border: none;
-            border-radius: 11px;
-            background-color: #3b8ea5;
-            color: #f0f0f0;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
-            margin-bottom: 5px;
-        }
+      #generateButton {
+        padding: 12px 24px;
+        margin-left: 0px;
+        border: none;
+        border-radius: 11px;
+        background-color: #3b8ea5;
+        color: #f0f0f0;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+        margin-bottom: 5px;
+      }
 
-        #toggleViewButton {
-            padding: 12px 24px;
-            margin-left: 10px;
-            border: none;
-            border-radius: 11px;
-            background-color: #3b8ea5;
-            color: #f0f0f0;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
-            margin-bottom: 5px;
-        }
+      #toggleViewButton {
+        padding: 12px 24px;
+        margin-left: 10px;
+        border: none;
+        border-radius: 11px;
+        background-color: #3b8ea5;
+        color: #f0f0f0;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+        margin-bottom: 5px;
+      }
 
-        #generateButton:hover,
-        #toggleViewButton:hover {
-            background-color: #41a3be;
-        }
+      #generateButton:hover,
+      #toggleViewButton:hover {
+        background-color: #41a3be;
+      }
 
-        #resolutionControls {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: -5px;
-        }
+      #resolutionControls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: -5px;
+      }
 
-        #resolutionControls label {
-            margin-right: 5px;
-            color: #f0f0f0;
-            font-size: 16px;
-        }
+      #resolutionControls label {
+        margin-right: 5px;
+        color: #f0f0f0;
+        font-size: 16px;
+      }
 
-        #resolutionRange {
-            width: 200px;
-            margin-left: 5px;
-            -webkit-appearance: none;
-            appearance: none;
-            height: 10px;
-            background: #4f5963;
-            border-radius: 5px;
-            outline: none;
-        }
+      #resolutionRange {
+        width: 200px;
+        margin-left: 5px;
+        -webkit-appearance: none;
+        appearance: none;
+        height: 10px;
+        background: #4f5963;
+        border-radius: 5px;
+        outline: none;
+      }
 
-        #resolutionRange::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            background: #21d498;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
-            transition: background-color 0.3s ease;
-        }
+      #resolutionRange::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        background: #21d498;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+        transition: background-color 0.3s ease;
+      }
 
-        #resolutionRange::-webkit-slider-thumb:hover {
-            background: #1fd699;
-        }
+      #resolutionRange::-webkit-slider-thumb:hover {
+        background: #1fd699;
+      }
 
-        #outputCanvas {
-            display: block;
-            margin: 20px auto;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 100%;
-            image-rendering: pixelated;
-            display: none;
-        }
+      #outputCanvas {
+        display: block;
+        margin: 20px auto;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 100%;
+        image-rendering: pixelated;
+        display: none;
+      }
 
-        #outputCode {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #394047;
-            border: 3px solid #4f5963;
-            border-radius: 10px;
-            font-family: Consolas, monospace;
-            white-space: pre-wrap;
-            overflow-x: auto;
-            max-height: 300px;
-            color: #f0f0f0;
-            display: none;
-            position: relative;
-        }
+      #outputCode {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #394047;
+        border: 3px solid #4f5963;
+        border-radius: 10px;
+        font-family: Consolas, monospace;
+        white-space: pre-wrap;
+        overflow-x: auto;
+        max-height: 300px;
+        color: #f0f0f0;
+        display: none;
+        position: relative;
+      }
 
-        #copyButton {
-            position: absolute;
-            top: 267px;
-            right: 32.5px;
-            padding: 7px 13px;
-            border: none;
-            border-radius: 10px;
-            background-color: #0dbf84;
-            color: #f0f0f0;
-            cursor: pointer;
-            font-size: 15px;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
-            display: none;
-            z-index: 500000000000000000000;
-        }
+      #copyButton {
+        position: absolute;
+        top: 267px;
+        right: 32.5px;
+        padding: 7px 13px;
+        border: none;
+        border-radius: 10px;
+        background-color: #0dbf84;
+        color: #f0f0f0;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+        display: none;
+        z-index: 500000000000000000000;
+      }
 
-        #copyButton:hover {
-            background-color: #21d498;
-        }
+      #copyButton:hover {
+        background-color: #21d498;
+      }
 
-        .error-message {
-            color: #dc3545;
-            font-size: 14px;
-            margin-top: 10px;
-        }
+      .error-message {
+        color: #dc3545;
+        font-size: 14px;
+        margin-top: 10px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>Image to pure CSS converter :D</h1>
-<input type="file" id="imageInput" accept="image/*">
-        <div class="control-group">
-            <button id="generateButton">Generate Image</button>
-            <button id="toggleViewButton">Show Code</button>
-        </div>
-        <div class="control-group" id="resolutionControls">
-            <label for="resolutionRange">Resolution:</label>
-            <input type="range" id="resolutionRange" min="1" max="5" value="2">
-            <span id="resolutionLabel">&nbsp;&nbsp;&nbsp;Medium</span>
-        </div>
-        <canvas id="outputCanvas"></canvas>
-        <div id="outputCode"></div>
-        <button id="copyButton"><i class="fa-solid fa-copy"></i></button>
-        <div id="errorMessage" class="error-message"></div>
+      <h1>Image to pure CSS converter :D</h1>
+      <input type="file" id="imageInput" accept="image/*">
+      <div class="control-group">
+        <button id="generateButton">Generate Image</button>
+        <button id="toggleViewButton">Show Code</button>
+      </div>
+      <div class="control-group" id="resolutionControls">
+        <label for="resolutionRange">Resolution:</label>
+        <input type="range" id="resolutionRange" min="1" max="5" value="2">
+        <span id="resolutionLabel">&nbsp;&nbsp;&nbsp;Medium</span>
+      </div>
+      <canvas id="outputCanvas"></canvas>
+      <div id="outputCode"></div>
+      <button id="copyButton">
+        <i class="fa-solid fa-copy"></i>
+      </button>
+      <div id="errorMessage" class="error-message"></div>
     </div>
-
     <script>
-        document.getElementById('generateButton').addEventListener('click', function() {
-            var file = document.getElementById('imageInput').files[0];
-            
-            if (file) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    var img = new Image();
-                    img.onload = function() {
-                        var canvas = document.getElementById('outputCanvas');
-                        var ctx = canvas.getContext('2d');
-                        var scale = parseFloat(document.getElementById('resolutionRange').value);
-                        canvas.width = img.width * scale;
-                        canvas.height = img.height * scale;
-                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                        var pixelSize = 4;
-                        for (var y = 0; y < canvas.height; y += pixelSize) {
-                            for (var x = 0; x < canvas.width; x += pixelSize) {
-                                var pixelData = ctx.getImageData(x, y, 1, 1).data;
-                                ctx.fillStyle = `rgb(${pixelData[0]}, ${pixelData[1]}, ${pixelData[2]})`;
-                                ctx.fillRect(x, y, pixelSize, pixelSize);
-                            }
-                        }
-                        var htmlCode = generateHTMLCode(canvas);
-                        document.getElementById('outputCode').textContent = htmlCode;
-                        document.getElementById('outputCanvas').style.display = 'block';
-                        document.getElementById('outputCode').style.display = 'none';
-                        document.getElementById('copyButton').style.display = 'none';
-                        document.getElementById('toggleViewButton').textContent = 'Show Code';
-                    };
-                    img.src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-        function generateHTMLCode(canvas) {
-            var htmlCode = '<div style="display: inline-block; border: 1px solid #ccc; overflow: hidden; font-size: 0;">\n';
-            var ctx = canvas.getContext('2d');
-            var pixelSize = 4;
-
-            for (var y = 0; y < canvas.height; y += pixelSize) {
-                htmlCode += '\t<div style="white-space: nowrap; font-size: 0;">\n';
+      document.getElementById('generateButton').addEventListener('click', function() {
+        var file = document.getElementById('imageInput').files[0];
+        if (file) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            var img = new Image();
+            img.onload = function() {
+              var canvas = document.getElementById('outputCanvas');
+              var ctx = canvas.getContext('2d');
+              var scale = parseFloat(document.getElementById('resolutionRange').value);
+              canvas.width = img.width * scale;
+              canvas.height = img.height * scale;
+              ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+              var pixelSize = 4;
+              for (var y = 0; y < canvas.height; y += pixelSize) {
                 for (var x = 0; x < canvas.width; x += pixelSize) {
-                    var pixelData = ctx.getImageData(x, y, 1, 1).data;
-                    var color = `rgb(${pixelData[0]}, ${pixelData[1]}, ${pixelData[2]})`;
-                    htmlCode += `\t\t<div style="width: ${pixelSize}px; height: ${pixelSize}px; background-color: ${color}; display: inline-block; margin: 0; padding: 0;"></div>\n`;
+                  var pixelData = ctx.getImageData(x, y, 1, 1).data;
+                  ctx.fillStyle = `rgb(${pixelData[0]}, ${pixelData[1]}, ${pixelData[2]})`;
+                  ctx.fillRect(x, y, pixelSize, pixelSize);
                 }
-                htmlCode += '\t</div>\n';
-            }
-
-            htmlCode += '</div>';
-            return htmlCode;
+              }
+              var htmlCode = generateHTMLCode(canvas);
+              document.getElementById('outputCode').textContent = htmlCode;
+              document.getElementById('outputCanvas').style.display = 'block';
+              document.getElementById('outputCode').style.display = 'none';
+              document.getElementById('copyButton').style.display = 'none';
+              document.getElementById('toggleViewButton').textContent = 'Show Code';
+            };
+            img.src = e.target.result;
+          };
+          reader.readAsDataURL(file);
         }
-        document.getElementById('toggleViewButton').addEventListener('click', function() {
-            var canvas = document.getElementById('outputCanvas');
-            var outputCode = document.getElementById('outputCode');
-            var copyButton = document.getElementById('copyButton');
-            
-            if (canvas.style.display === 'none') {
-                canvas.style.display = 'block';
-                outputCode.style.display = 'none';
-                copyButton.style.display = 'none';
-                this.textContent = 'Show Code';
-            } else {
-                canvas.style.display = 'none';
-                outputCode.style.display = 'block';
-                copyButton.style.display = 'block';
-                this.textContent = 'Show Image';
-            }
-        });
-        document.getElementById('resolutionRange').addEventListener('input', function() {
-            var resolutionLabel = document.getElementById('resolutionLabel');
-            var value = parseFloat(this.value);
+      });
 
-            switch (value) {
-                case 0.5:
-                    resolutionLabel.textContent = 'Very Low (0.5x)';
-                    break;
-                case 1:
-                    resolutionLabel.textContent = 'Low (1x)';
-                    break;
-                case 2:
-                    resolutionLabel.textContent = 'Medium (2x)';
-                    break;
-                case 3:
-                    resolutionLabel.textContent = 'High (3x)';
-                    break;
-                case 4:
-                    resolutionLabel.textContent = 'Very High (4x)';
-                    break;
-                case 5:
-                    resolutionLabel.textContent = 'Ultra (5x)';
-                    break;
-                default:
-                    break;
-            }
-        });
-    document.getElementById('copyButton').addEventListener('click', function() {
+      function generateHTMLCode(canvas) {
+        var htmlCode = ' < div style = "display: inline-block; border: 1px solid #ccc; overflow: hidden; font-size: 0;" > \n ';
+        var ctx = canvas.getContext('2d');
+        var pixelSize = 4;
+        for (var y = 0; y < canvas.height; y += pixelSize) {
+          htmlCode += '\t < div style = "white-space: nowrap; font-size: 0;" > \n ';
+          for (var x = 0; x < canvas.width; x += pixelSize) {
+            var pixelData = ctx.getImageData(x, y, 1, 1).data;
+            var color = `rgb(${pixelData[0]}, ${pixelData[1]}, ${pixelData[2]})`;
+            htmlCode += `\t\t
+										<div style="width: ${pixelSize}px; height: ${pixelSize}px; background-color: ${color}; display: inline-block; margin: 0; padding: 0;"></div>\n`;
+          }
+          htmlCode += '\t < /div>\n';
+        }
+        htmlCode += ' < /div>';
+        return htmlCode;
+      }
+      document.getElementById('toggleViewButton').addEventListener('click', function() {
+        var canvas = document.getElementById('outputCanvas');
+        var outputCode = document.getElementById('outputCode');
+        var copyButton = document.getElementById('copyButton');
+        if (canvas.style.display === 'none') {
+          canvas.style.display = 'block';
+          outputCode.style.display = 'none';
+          copyButton.style.display = 'none';
+          this.textContent = 'Show Code';
+        } else {
+          canvas.style.display = 'none';
+          outputCode.style.display = 'block';
+          copyButton.style.display = 'block';
+          this.textContent = 'Show Image';
+        }
+      });
+      document.getElementById('resolutionRange').addEventListener('input', function() {
+        var resolutionLabel = document.getElementById('resolutionLabel');
+        var value = parseFloat(this.value);
+        switch (value) {
+          case 0.5:
+            resolutionLabel.textContent = 'Very Low (0.5x)';
+            break;
+          case 1:
+            resolutionLabel.textContent = 'Low (1x)';
+            break;
+          case 2:
+            resolutionLabel.textContent = 'Medium (2x)';
+            break;
+          case 3:
+            resolutionLabel.textContent = 'High (3x)';
+            break;
+          case 4:
+            resolutionLabel.textContent = 'Very High (4x)';
+            break;
+          case 5:
+            resolutionLabel.textContent = 'Ultra (5x)';
+            break;
+          default:
+            break;
+        }
+      });
+      document.getElementById('copyButton').addEventListener('click', function() {
         var outputCode = document.getElementById('outputCode');
         var range = document.createRange();
         range.selectNode(outputCode);
@@ -300,12 +298,11 @@
         window.getSelection().addRange(range);
         document.execCommand('copy');
         var copyButton = this;
-        copyButton.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
-        
+        copyButton.innerHTML = ' < i class = "fa-solid fa-check" > < /i> Copied!';
         setTimeout(function() {
-            copyButton.innerHTML = '<i class="fa-solid fa-copy"></i>';
+          copyButton.innerHTML = ' < i class = "fa-solid fa-copy" > < /i>';
         }, 1000);
-    });
+      });
     </script>
-</body>
+  </body>
 </html>
