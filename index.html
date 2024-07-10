@@ -17,7 +17,52 @@
         margin: 0;
         overflow-y: hidden;
       }
+                  .web-button {
+        position: absolute;
+        top: 10px;
+        right: 11px;
+        width: 44px;
+        height: 40px;
+        border: none;
+        border-radius: 11px;
+        background-color: #3b8ea5;
+        color: #f0f0f0;
+        cursor: pointer;
+        font-size: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.3s ease;
+        padding: 0;
+      }
+
+      .web-button:hover {
+        background-color: #41a3be;
+      }
       
+      .git-button {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 44px;
+        height: 40px;
+        border: none;
+        border-radius: 11px;
+        background-color: #3b8ea5;
+        color: #f0f0f0;
+        cursor: pointer;
+        font-size: 26px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.3s ease;
+        padding: 0;
+      }
+
+      .git-button:hover {
+        background-color: #41a3be;
+      }
+
       .container {
         background-color: #2d3339;
         padding: 20px;
@@ -178,7 +223,11 @@
   </head>
   <body>
     <div class="container">
-      <h1>Image to pure CSS converter :D</h1><h3>𝙼𝚊𝚍𝚎 𝚋𝚢 𝚍𝚒𝚗𝚐𝚞𝚜𝚌𝚑𝚊𝚗!</h3>
+      <h1>Image to pure CSS converter :D</h1><h3>𝙼𝚊𝚍𝚎 𝚋𝚢 𝚍𝚒𝚗𝚐𝚞𝚜𝚌𝚑𝚊𝚗!</h3>      <button class="git-button" onclick="openGit()">
+        <i class="fa-brands fa-github"></i>
+      </button>
+            <button class="web-button" onclick="openWeb()">
+              <i class="fa-solid fa-globe"></i></button>
       <input type="file" id="imageInput" accept="image/*">
       <div class="control-group">
         <button id="generateButton">Show Preview</button>
